@@ -1,0 +1,9 @@
+dist/
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+*.swo
+src/**/*.js
+src/**/*.js.map
