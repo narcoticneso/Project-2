@@ -25,18 +25,39 @@ export let defaultVSText = `
     }
 `;
 
-// TODO: Write the fragment shader
-
 export let defaultFSText = `
-    precision mediump float;
+precision mediump float;
 
-    varying vec4 lightDir;
-    varying vec4 normal;    
-	
-    
-    void main () {
-        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+varying vec4 lightDir;
+varying vec4 normal;
+
+void main () {
+
+    vec3 N = normalize(normal.xyz);
+    vec3 L = normalize(lightDir.xyz);
+
+    // Determine base color from dominant axis of the normal
+    vec3 aN = abs(N);
+    vec3 baseColor;
+
+    if (aN.x >= aN.y && aN.x >= aN.z) {
+        baseColor = vec3(1.0, 0.0, 0.0); // ±X -> red
+    } else if (aN.y >= aN.x && aN.y >= aN.z) {
+        baseColor = vec3(0.0, 1.0, 0.0); // ±Y -> green
+    } else {
+        baseColor = vec3(0.0, 0.0, 1.0); // ±Z -> blue
     }
+
+    // Diffuse lighting
+    float diffuse = max(dot(N, L), 0.0);
+
+    // Small ambient term
+    float ambient = 0.15;
+
+    vec3 color = baseColor * (ambient + (1.0 - ambient) * diffuse);
+
+    gl_FragColor = vec4(color, 1.0);
+}
 `;
 
 // TODO: floor shaders
