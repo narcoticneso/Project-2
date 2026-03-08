@@ -218,56 +218,91 @@ export class GUI implements IGUI {
 
 	// TOOD: Your code for key handling
 
+  if (
+    key.code === "ArrowLeft" || key.code === "ArrowRight" || key.code === "ArrowUp" || key.code === "ArrowDown"
+  ) {
+    key.preventDefault();
+  }
+
     switch (key.code) {
-      case "KeyW": {
+		case "KeyW": {
+        if (this.fps) {
+          this.camera.offset(this.camera.forward(), -GUI.zoomSpeed, true);
+        }
 
         break;
       }
       case "KeyA": {
+        if (this.fps) {
+          this.camera.offset(this.camera.right(), -GUI.zoomSpeed, true);
+        }
 
         break;
       }
       case "KeyS": {
+        if (this.fps) {
+          this.camera.offset(this.camera.forward(), GUI.zoomSpeed, true);
+        }
 
         break;
       }
       case "KeyD": {
+        if (this.fps) {
+          this.camera.offset(this.camera.right(), GUI.zoomSpeed, true);
+        }
 
         break;
       }
       case "KeyR": {
+        this.animation.reset();
 
         break;
       }
       case "ArrowLeft": {
+        this.camera.roll(GUI.rollSpeed, false);
 
         break;
       }
       case "ArrowRight": {
+        this.camera.roll(GUI.rollSpeed, true);
 
         break;
       }
       case "ArrowUp": {
+        if (this.fps) {
+          this.camera.offset(this.camera.up(), GUI.panSpeed, true);
+        }
 
         break;
       }
       case "ArrowDown": {
+        if (this.fps) {
+          this.camera.offset(this.camera.up(), -GUI.panSpeed, true);
+        }
 
         break;
       }
       case "Digit1": {
+        this.sponge.setLevel(1);
+        this.fps = false;
 
         break;
       }
       case "Digit2": {
+        this.sponge.setLevel(2);
+        this.fps = true;
 
         break;
       }
       case "Digit3": {
+        this.sponge.setLevel(3);
+        this.fps = true;
 
         break;
       }
       case "Digit4": {
+        this.sponge.setLevel(4);
+        this.fps = true;
 
         break;
       }
