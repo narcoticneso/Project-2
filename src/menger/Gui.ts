@@ -283,25 +283,25 @@ export class GUI implements IGUI {
         break;
       }
       case "Digit1": {
-        this.sponge.setLevel(1);
+        this.sponge.setLevel(0);
         this.fps = false;
 
         break;
       }
       case "Digit2": {
-        this.sponge.setLevel(2);
+        this.sponge.setLevel(1);
         this.fps = true;
 
         break;
       }
       case "Digit3": {
-        this.sponge.setLevel(3);
+        this.sponge.setLevel(2);
         this.fps = true;
 
         break;
       }
       case "Digit4": {
-        this.sponge.setLevel(4);
+        this.sponge.setLevel(3);
         this.fps = true;
 
         break;
