@@ -284,7 +284,7 @@ export class GUI implements IGUI {
       }
       case "Digit1": {
         this.sponge.setLevel(0);
-        this.fps = false;
+        this.fps = true;
 
         break;
       }
