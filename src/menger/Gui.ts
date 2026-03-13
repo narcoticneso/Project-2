@@ -218,6 +218,8 @@ export class GUI implements IGUI {
 
 	// TOOD: Your code for key handling
 
+  this.fps = true;
+  
   if (
     key.code === "ArrowLeft" || key.code === "ArrowRight" || key.code === "ArrowUp" || key.code === "ArrowDown"
   ) {
@@ -342,3 +344,4 @@ export class GUI implements IGUI {
     );
   }
 }
+
