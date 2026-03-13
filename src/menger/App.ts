@@ -1,3 +1,4 @@
+
 import {
   CanvasAnimation,
   WebGLUtilities
@@ -172,7 +173,7 @@ export class MengerAnimation extends CanvasAnimation {
     );
 
     /* End VAO recording */
-    this.extVAO.bindVertexArrayOES(this.mengerVAO);
+    this.extVAO.bindVertexArrayOES(null);
 
     /* Get uniform locations */
     this.mengerWorldUniformLocation = gl.getUniformLocation(
@@ -335,7 +336,7 @@ export class MengerAnimation extends CanvasAnimation {
       false,
       new Float32Array(Mat4.identity.all())
     );
-    if (this.floorLightUniformLocation) {
+    if (this.floorLightUniformLocation !== null) {
       gl.uniform4fv(this.floorLightUniformLocation, this.lightPosition.xyzw);
     }
   }
@@ -452,6 +453,9 @@ export class MengerAnimation extends CanvasAnimation {
       false,
       new Float32Array(this.gui.projMatrix().all())
     );
+    if (this.floorLightUniformLocation !== null) {
+      gl.uniform4fv(this.floorLightUniformLocation, this.lightPosition.xyzw);
+    }
     
 
   /* Draw floor */
